@@ -1,6 +1,10 @@
+"use client";
+
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import TextInput from "@repo/ui/text-input";
+import { useRouter } from "next/navigation";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -9,7 +13,7 @@ type Props = Omit<ImageProps, "src"> & {
 
 const ThemeImage = (props: Props) => {
   const { srcLight, srcDark, ...rest } = props;
-
+  
   return (
     <>
       <Image {...rest} src={srcLight} className="imgLight" />
@@ -19,6 +23,7 @@ const ThemeImage = (props: Props) => {
 };
 
 export default function Home() {
+  const router = useRouter();
   return (
    <div style={{
     height:"100vh",
@@ -27,8 +32,8 @@ export default function Home() {
     alignItems : "center",
     justifyContent:"center"
    }}>
-    <input type="text"  />
-    <button>Join room</button>
+    <TextInput placeholder="Enter the number" onChange={() => {alert("hii")}}/>
+    <button onClick={() =>router.push("/chat/123") }>Join room</button>
    </div>
   );
 }

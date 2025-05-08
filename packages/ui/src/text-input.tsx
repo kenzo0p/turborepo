@@ -1,11 +1,21 @@
 import React from 'react'
 
-const TextInput = () => {
+interface Props {
+  placeholder  : string
+  onChange : () => void
+}
+const TextInput = ({placeholder , onChange} : Props) => {
   return (
     <input style={{
-        padding:"10",
+        padding:10,
+        margin:10,
+        borderColor:"black",
+        borderWidth:1,
 
-    }}/>
+    }}
+    onChange={onChange}
+      placeholder={placeholder}
+    />
   )
 }
 //27.44
